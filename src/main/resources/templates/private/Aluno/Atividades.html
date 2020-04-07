@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{Layout}">
+	
+<head>
+	<title>Turmas</title>
+</head>
+	<section layout:fragment="conteudo">
+		<div>
+			<p class="cor-fonte-cinza-escuro titulo1 negrito my-2" th:text="|Atividades da turma ${turma.nome}"></p>
+			<hr/>
+			
+			<div class="accordion" id="accordionAtividade">
+				<div class="card" th:each="atividade : ${atividades}">
+					<div class="card-header" th:id="'headingAtividade' + ${atividade.id}">
+						<div data-toggle="collapse" th:data-target="'#collapse' + ${atividade.id}" aria-expanded="true" th:aria-controls="${atividade.id}">
+							
+							<i class="fas fa-book"></i>
+							<strong th:text="${atividade.nome}"></strong>
+							<div class="data-devolucao-accordion" align="right">
+								<label th:text="'Data para devolução: ' + ${{atividade.dataDevolucao}}"></label>
+							</div>
+						</div>
+					</div>
+				
+					<div th:id="'collapse' + ${atividade.id}" class="collapse hide" th:aria-labelledby="'heading' + ${atividade.id}" data-parent="#accordionAtividade">
+						<div class="card-body">
+								
+								
+								
+								<div class="form-row">
+									<div class="form-group col-md-2 col-lg-2">
+										<label for="turma" class="negrito">Turma</label>
+										<input readonly class="form-control-plaintext" id="turma" th:value="${atividade.turma.nome}">
+									</div>
+									
+									<div class="form-group col-md-4 col-lg-4">
+										<label for="nomeAtividade" class="negrito">Nome</label>
+										<input readonly class="form-control-plaintext" id="nomeAtividade" th:value="${atividade.nome}">
+									</div>
+									
+									<div class="form-group col-md-2 col-lg-2">
+										<label for="materiaAtividade" class="negrito">Matéria</label>
+										<input readonly class="form-control-plaintext" id="materiaAtividade" th:value="${atividade.materia}">
+									</div>
+									
+									<div class="col-md-3 col-lg-3">
+										<label for="dataDevolucaoAtividade" class="negrito">Data para devolução</label>
+										<input readonly class="form-control-plaintext" id="dataDevolucaoAtividade" th:value="${{atividade.dataDevolucao}}">
+									</div>
+									
+									<div class="col-md-1" align="center">
+										<label for="acoes" class="negrito">Ações</label>
+										<div class="form-control-paintext" align="center">
+											<a title="Baixar PDF" th:if="${atividade.pdf} != null" class="cor-fonte-vermelho" 
+												th:href="@{/private/atividades/valida-download-pdf/{id}(id = ${atividade.id})}">
+												<i class="far fa-file-pdf" ></i>
+											</a>
+											
+											<a title="Ver video" th:if="${!#strings.isEmpty(atividade.urlVideo)}" 
+												class="js-visualizar-video cor-fonte-vermelho mx-2" th:href="${atividade.urlVideo}" target="_blank">
+												<i class="fab fa-youtube" ></i>
+											</a>
+										</div>
+										
+									</div>
+									
+  
+								</div>
+								
+								
+						</div>
+					</div>
+				</div>
+			</div>
+			
+			
+		</div>
+		
+	</section>
+</html>

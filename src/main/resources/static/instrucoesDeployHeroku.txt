@@ -1,0 +1,1 @@
+heroku war:deploy C:\Users\DIEGO\workspace\e-atividade\target\e-atividade-0.0.1.war --app e-atividade

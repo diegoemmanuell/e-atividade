@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>E-Atividade</title>
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
+<link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+<link rel="stylesheet" th:href="@{/css/base.css}">
+<link rel="stylesheet" th:href="@{/css/components.css}">
+<link rel="stylesheet" th:href="@{/css/login.css}">
+<link rel="stylesheet" th:href="@{/css/eatividade.css}">
+
+
+<link rel="apple-touch-icon" sizes="57x57" th:href="@{/imagens/favicon/apple-icon-57x57.png}">
+<link rel="apple-touch-icon" sizes="60x60" th:href="@{/imagens/favicon/apple-icon-60x60.png}">
+<link rel="apple-touch-icon" sizes="72x72" th:href="@{/imagens/favicon/apple-icon-72x72.png}">
+<link rel="apple-touch-icon" sizes="76x76" th:href="@{/imagens/favicon/apple-icon-76x76.png}">
+<link rel="apple-touch-icon" sizes="114x114" th:href="@{/imagens/favicon/apple-icon-114x114.png}">
+<link rel="apple-touch-icon" sizes="120x120" th:href="@{/imagens/favicon/apple-icon-120x120.png}">
+<link rel="apple-touch-icon" sizes="144x144" th:href="@{/imagens/favicon/apple-icon-144x144.png}">
+<link rel="apple-touch-icon" sizes="152x152" th:href="@{/imagens/favicon/apple-icon-152x152.png}">
+<link rel="apple-touch-icon" sizes="180x180" th:href="@{/imagens/favicon/apple-icon-180x180.png}">
+<link rel="icon" type="image/png" sizes="192x192"  th:href="@{/imagens/favicon/android-icon-192x192.png}">
+<link rel="icon" type="image/png" sizes="32x32" th:href="@{/imagens/favicon/favicon-32x32.png}">
+<link rel="icon" type="image/png" sizes="96x96" th:href="@{/imagens/favicon/favicon-96x96.png}">
+<link rel="icon" type="image/png" sizes="16x16" th:href="@{/imagens/favicon/favicon-16x16.png}">
+
+</head>
+
+<body>
+	<div class="wrapper">
+		<div class="container conteudo">
+			
+			<form id="formLogin" class="form-signin text-center mt-5" th:action="@{/login/check}" method="POST">
+				
+			
+				<p class="cor-fonte-cinza-escuro  h1 negrito my-2">E-Atividade</p>
+				
+				<a>
+					<i class="fas fa-laptop-house"></i>
+				</a>
+
+				<h1 class="h5 mb-3 font-weight-normal">Autentique-se</h1>
+				
+				<div th:replace="Mensagens">
+				</div>
+				
+				<input id="login" class="form-control mb-3" placeholder="Login" autocomplete="bday" required name="username" autofocus> 
+				
+				<input type="password" id="password" class="form-control mb-3" placeholder="Senha" required name="password">
+				
+				<button id="btnEntrar" class="btn-lg btn-block btn btn-outline-secondary btn-periodo-card mb-3" type="submit">
+					<span id="loadingBtnEntrar" class="spinner-border spinner-border-sm mr-2 d-none" role="status" aria-hidden="true"></span>
+					<span id="textoBtnEntrar">Entrar</span>
+				</button>
+				
+			</form>
+		</div>
+	</div>
+	
+	<script th:src="@{/js/jquery-3.3.1.min.js}"></script>
+	<script th:src="@{/js/bootstrap.min.js}"></script>
+	<script th:src="@{/js/popper.min.js}"></script>
+	<script th:src="@{/js/jquery.mask.min.js}"></script>
+	<script th:src="@{/js/jquery-confirm.min.js}"></script>
+	<script th:src="@{/js/eatividade.js}"></script>
+	<script th:src="@{/js/toggle.js}"></script>
+</body>
+</html>

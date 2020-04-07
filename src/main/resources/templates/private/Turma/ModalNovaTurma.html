@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+	<div class="modal" tabindex="-1" role="dialog" id="modalNovaTurma" aria-labelledby="tituloModalNovaTurma" aria-hidden="true">
+ 		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="tituloModalPushs">Nova turma</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+			          <span aria-hidden="true">&times;</span>
+			        </button>
+				</div>
+				<div class="modal-body">
+				
+					<form method="POST" th:object="${turma}" th:action="@{/private/turmas}">
+						<input id="idTurma" type="hidden" th:field="*{id}">
+					
+						<div class="form-group">
+						    <label for="nome">Nome</label>
+						    <input class="form-control" id="nome" placeholder="Nome da turma"  required th:field="*{nome}">
+				   	    </div>
+						
+						<div class="form-group">
+						    <label for="turno">Turno</label>
+						    <select class="form-control" id="turno" th:field="*{turno}">
+						    	<option value="">-- Selecione --</option>
+							    <option th:value="Manhã">Manhã</option>
+							    <option th:value="Tarde">Tarde</option>
+						    </select>
+				    	</div>
+						
+						<button type="submit" class="btn btn-outline-secondary">
+							Salvar
+							<i class="far fa-save"></i>
+						</button>
+					</form>
+				
+		      	</div>
+			</div>
+ 		</div>
+ 	</div>
+	
+</html>

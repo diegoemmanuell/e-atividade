@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{Layout}">
+	
+<head>
+	<title>Turmas</title>
+</head>
+	<section layout:fragment="conteudo">
+		<div>
+			<p class="cor-fonte-cinza-escuro titulo1 negrito my-2">Selecione uma das turmas abaixo:</p>
+			<hr/>
+			
+			<div class="row" align="center">
+				<div class="btn-tela-turmas col-md-4" th:each="turma : ${turmas}">
+					<a class="btn botoes-tela-turmas col-md-12" th:href="@{/private/alunos/atividades/{idTurma}(idTurma = ${turma.id})}">
+						<i class="fas fa-chalkboard-teacher middle"></i>
+						<label th:text="${turma.nome}" class="label-botoes-turmas"></label>
+					</a>
+				</div>
+			</div>
+		</div>
+	</section>
+</html>

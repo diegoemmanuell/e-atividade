@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<title>E-Atividade</title>
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
+<!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous"> -->
+
+<link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+<link rel="stylesheet" th:href="@{/css/base.css}">
+<link rel="stylesheet" th:href="@{/css/components.css}">
+<link rel="stylesheet" type="text/css" th:href="@{/css/jquery-confirm.min.css}"/>
+<link rel="stylesheet" type="text/css" th:href="@{/css/eatividade.css}"/>
+
+<!-- <link rel="apple-touch-icon" sizes="57x57" th:href="@{/imagens/favicon/apple-icon-57x57.png}"> -->
+<!-- <link rel="apple-touch-icon" sizes="60x60" th:href="@{/imagens/favicon/apple-icon-60x60.png}"> -->
+<!-- <link rel="apple-touch-icon" sizes="72x72" th:href="@{/imagens/favicon/apple-icon-72x72.png}"> -->
+<!-- <link rel="apple-touch-icon" sizes="76x76" th:href="@{/imagens/favicon/apple-icon-76x76.png}"> -->
+<!-- <link rel="apple-touch-icon" sizes="114x114" th:href="@{/imagens/favicon/apple-icon-114x114.png}"> -->
+<!-- <link rel="apple-touch-icon" sizes="120x120" th:href="@{/imagens/favicon/apple-icon-120x120.png}"> -->
+<!-- <link rel="apple-touch-icon" sizes="144x144" th:href="@{/imagens/favicon/apple-icon-144x144.png}"> -->
+<!-- <link rel="apple-touch-icon" sizes="152x152" th:href="@{/imagens/favicon/apple-icon-152x152.png}"> -->
+<!-- <link rel="apple-touch-icon" sizes="180x180" th:href="@{/imagens/favicon/apple-icon-180x180.png}"> -->
+<!-- <link rel="icon" type="image/png" sizes="192x192"  th:href="@{/imagens/favicon/android-icon-192x192.png}"> -->
+<!-- <link rel="icon" type="image/png" sizes="32x32" th:href="@{/imagens/favicon/favicon-32x32.png}"> -->
+<!-- <link rel="icon" type="image/png" sizes="96x96" th:href="@{/imagens/favicon/favicon-96x96.png}"> -->
+<!-- <link rel="icon" type="image/png" sizes="16x16" th:href="@{/imagens/favicon/favicon-16x16.png}"> -->
+
+</head>
+	
+	<body>
+		<div class="wrapper">
+			<input type="hidden" id="contexto" th:value="@{/}">
+			
+			<header layout:insert="private/Cabecalho">
+				<p>header</p>
+			</header>
+		
+			<div layout:insert="Mensagens">
+				<p>Mensagens</p>
+			</div>
+			
+			<div class="container conteudo">
+				<th:block layout:fragment="conteudo">
+				</th:block>
+				<div class="mt-5" align="center">
+					<a th:href="@{/}" class="btn-outline-secondary">
+						<i class="fas fa-home"></i>
+						Página inicial
+					</a>
+				</div>
+			</div>
+		</div>
+		
+<!-- 	==================================================================================================================== -->
+
+	<script th:src="@{/js/jquery-3.3.1.min.js}"></script>
+	<script th:src="@{/js/bootstrap.min.js}"></script>
+	<script th:src="@{/js/popper.min.js}"></script>
+
+<!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script> -->
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script> -->
+<!-- <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script> -->
+
+
+	<script th:src="@{/js/jquery.mask.min.js}"></script>
+	<script th:src="@{/js/jquery-confirm.min.js}"></script>
+	<script th:src="@{/js/toggle.js}"></script>
+	<script th:src="@{/js/util.js}"></script>
+	<script th:src="@{/js/eatividade.js}"></script>
+</body>
+</html>

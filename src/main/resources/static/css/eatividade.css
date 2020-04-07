@@ -1,0 +1,62 @@
+.
+.tabela-ranking-atletas-dados {
+	float: right;
+}
+
+.tabela-ranking-atletas-resumo {
+	float: left;
+}
+
+.card-body-texto {
+	font-size: 12px;
+}
+
+.dropdown-menu-cabecalho.show {
+	min-width: 15rem;
+}
+
+.float-right {
+	float: right
+}
+
+.btn-tela-turmas{
+	padding-top: 50px;
+	padding-left: 50px;
+	padding-right: 50px; 
+}
+
+.btn-tela-turmas a {
+	font-size: 25px;
+}
+
+.botoes-tela-turmas{
+	
+	color: grey !important;
+	background-color: transparent;
+	background-image: none;
+	border-color: grey
+	
+}
+
+.botoes-tela-turmas:hover{
+	
+	color: white !important;
+	background-color: grey;
+	background-image: none;
+	border-color: white;
+	
+}
+
+.label-botoes-turmas{
+	margin-bottom: 0px;
+}
+
+.data-devolucao-accordion label{
+	margin-bottom: 0px;
+}
+
+.data-devolucao-accordion {
+	float: right;
+}
+
+

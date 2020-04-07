@@ -1,0 +1,75 @@
+/* ***********************************************\
+
+
+				base do sistema
+
+
+\*************************************************/
+
+@font-face {
+	font-family: Unimed Slab;
+	src: url(/css/fonts/UnimedSlab-Regular.otf);
+}
+
+@font-face {
+	font-family: Unimed Slab Bold;
+	src: url(/css/fonts/UnimedSlab-Bold.otf);
+}
+
+@font-face {
+	font-family: Unimed Sans;
+	src: url(/css/fonts/UnimedSans-Regular.otf);
+}
+
+@font-face {
+	font-family: Unimed Serif;
+	src: url(/css/fonts/UnimedSerif-Regular.otf);
+}
+
+
+@include media-breakpoint-up(sm) {
+  html {
+    font-size: 1rem;
+  }
+}
+
+@include media-breakpoint-up(md) {
+  html {
+    font-size: 1.2rem;
+  }
+}
+
+@include media-breakpoint-up(lg) {
+  html {
+    font-size: 1.4rem;
+  }
+}
+
+body {
+	font-family: "Unimed Slab", "Trebuchet MS", "Roboto Slab", serif;
+	color: #5B5C65;
+}
+
+hr {
+	background-color: #c4cbcf;
+	color: #c4cbcf;
+	height: 2px;
+	margin: 10px 0;
+	border: 0;
+}
+
+.unimed-sans {
+	font-family: Unimed Sans;
+}
+
+.unimed-serif {
+	font-family: Unimed Serif;
+}
+
+.unimed-slab {
+	font-family: Unimed Slab;
+}
+
+.unimed-slab-bold {
+	font-family: Unimed Slab Bold;
+}

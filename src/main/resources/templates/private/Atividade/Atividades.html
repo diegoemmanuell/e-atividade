@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{Layout}">
+	
+<head>
+	<title>Atividades</title>
+</head>
+	<section layout:fragment="conteudo">
+		<div>
+			<p class="cor-fonte-cinza-escuro titulo1 negrito my-2">Atividades</p>
+			<hr/>
+		</div>
+		
+		<div class=my-3>
+			<button class="btn btn-outline-secondary" data-toggle="modal" data-target="#modalNovaAtividade">
+				Nova atividade
+				<i class="ml-2 fas fa-plus"></i>
+			</button> 
+		</div>
+
+		<div class="table-responsive">
+			<table class="table table-striped table-sm" id="tableTurmas">
+				<thead>
+					<tr>
+	  					<th scope="col" class="text-center">Id</th>
+	  					<th scope="col">Nome</th>
+	  					<th scope="col">Matéria</th>
+	  					<th scope="col">Turma</th>
+	  					<th scope="col" class="text-center">Data do cadastro</th>
+	  					<th scope="col" class="text-center">Data para devolução</th>
+	  					<th scope="col" class="text-center">Visualizar</th>
+	  					<th scope="col" class="text-center" 
+	  						th:if="${#authorization.expression('hasRole(''ROLE_DIRETOR'')')}">Deletar</th>
+	  					<th scope="col" class="text-center">Editar</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="atividade : ${atividades}">
+						<td class="text-center" th:text="${atividade.id}"></td>
+						<td th:text="${atividade.nome}"></td>
+						<td th:text="${atividade.materia}"></td>
+						<td th:text="${atividade.turma.nome}"></td>
+						<td class="text-center" th:text="${{atividade.dataCadastro}}"></td>
+						<td class="text-center" th:text="${{atividade.dataDevolucao}}"></td>
+						
+						<td class="text-center">
+							<a title="Baixar PDF" th:if="${atividade.pdf} != null" class="cor-fonte-vermelho"
+								th:href="@{/private/atividades/valida-download-pdf/{id}(id = ${atividade.id})}">
+								<i class="far fa-file-pdf" ></i>
+							</a>
+							
+							<a title="Ver video" th:if="${!#strings.isEmpty(atividade.urlVideo)}" 
+								class="js-visualizar-video cor-fonte-vermelho mx-2" th:href="${atividade.urlVideo}" target="_blank">
+								<i class="fab fa-youtube" ></i>
+							</a>
+						</td>
+						
+						<td class="text-center js-deleta-atividade" th:href="@{/private/atividades/deleta/{id}(id = ${atividade.id})}"
+							th:attr="data-atividade=${atividade.nome}, data-turma=${atividade.turma.nome}"
+							th:if="${#authorization.expression('hasRole(''ROLE_DIRETOR'')')}">
+							<a title="Deletar" >
+								<i class="fas fa-trash-alt"></i>
+							</a>
+						</td>
+						
+						<td class="text-center" >
+							<a class="js-editar-atividade" 
+							th:attr="data-atividade-id=${atividade.id}, data-atividade-nome=${atividade.nome}, data-atividade-materia=${atividade.materia}, data-atividade-turma=${atividade.turma.id}, data-atividade-devolucao=${{atividade.dataDevolucao}}, data-atividade-possui-pdf=${atividade.pdf != null}, data-atividade-url=${atividade.urlVideo}">
+								<i class="fas fa-pencil-alt"></i>
+							</a>
+						</td>
+						
+					</tr>
+					
+					<tr>
+						<td class="text-center" colspan="8" th:if="${#lists.isEmpty(atividades)}">Nenhuma atividade foi encontrada</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		
+		<div th:replace="private/Atividade/ModalNovaAtividade"></div>
+		<div th:replace="private/Atividade/ModalVideo"></div>
+	</section>
+</html>

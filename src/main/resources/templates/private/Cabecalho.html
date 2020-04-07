@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+	
+	<div class="cabecalho">
+		<nav class="navbar navbar-light">
+			<div class="container">
+				<div class="dropdown my-2">
+									
+					<button class="btn btn-outline-secondary btn-periodo-card dropdown-toggle" type="button"
+						id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
+						aria-expanded="false">
+						<span class="navbar-toggler-icon cor-fonte-cinza-escuro"></span>
+					</button>
+					
+					<span th:if="${!#authorization.expression('isAuthenticated()')}" class="mt-3 mx-3 negrito h4">E-Atividade</span>
+					
+					<div class="dropdown-menu dropdown-menu-left dropdown-menu-cabecalho" aria-labelledby="dropdownMenuButton">
+							
+							<a class="dropdown-item cor-fonte-cinza-escuro" th:href="@{/private/turmas}" 
+								th:if="${#authorization.expression('hasRole(''ROLE_DIRETOR'')')}">Turmas</a> 
+								
+							<a class="dropdown-item cor-fonte-cinza-escuro" th:href="@{/private/atividades}"
+								th:if="${#authorization.expression('hasAnyRole(''ROLE_DIRETOR'', ''ROLE_PROFESSOR'')')}">Atividades</a> 
+								
+							<a class="dropdown-item cor-fonte-cinza-escuro" th:href="@{/private/alunos/turmas}"
+								th:if="${#authorization.expression('hasRole(''ROLE_ALUNO'')')}">Turmas</a> 
+							
+<!-- 							<a class="dropdown-toggle dropdown-item cor-fonte-cinza-escuro" href="#" id="navRanking" data-toggle="dropdown" aria-haspopup="false" aria-expanded="true"> -->
+<!-- 								Ranking -->
+<!-- 							</a>  -->
+							
+<!-- 							<div class="dropdown-menu" aria-labelledby="navRanking"> -->
+<!-- 								<a class="dropdown-item cor-fonte-cinza-escuro" th:href="@{/admin/posicao}">Posição</a>  -->
+<!-- 							</div> -->
+					</div>
+				</div>
+				
+				<div align="right" th:if="${#authorization.expression('isAuthenticated()')}">
+				    <a class="cor-fonte-cinza-escuro" title="Sair" th:href="@{/logout}" data-toggle="tooltip">
+				    	<i class="fas fa-sign-out-alt"></i>
+				    </a>
+				</div>
+			</div>
+		</nav>
+	</div>
+</html>
