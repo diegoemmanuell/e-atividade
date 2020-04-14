@@ -36,7 +36,7 @@ public class AlunoController {
 		
 		Turma turma = turmaService.findById(idTurma);
 		
-		List<Atividade> atividades = atividadeService.findByTurmaOrderByDataDevolucaoAndId(turma);
+		List<Atividade> atividades = atividadeService.findAll(turma);
 		
 		if(atividades.isEmpty()){
 			model.addAttribute("errorMessage", "Nenhuma atividade foi encontrada para a turma ".concat(turma.getNome().concat(".")));

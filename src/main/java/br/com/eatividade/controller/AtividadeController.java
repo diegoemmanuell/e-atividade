@@ -11,10 +11,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import br.com.eatividade.model.Atividade;
+import br.com.eatividade.model.Turma;
 import br.com.eatividade.service.AtividadeService;
 import br.com.eatividade.service.TurmaService;
 
@@ -26,14 +28,18 @@ public class AtividadeController {
 	@Autowired private TurmaService turmaService;
 	
 	@GetMapping
-	public String getAtividades(Model model){
+	public String getAtividades(Model model, @RequestParam(name = "idTurma", required = false) Long idTurma){
 		
-		List<Atividade> atividades = atividadeService.findAll();
+		Turma turma = idTurma == null ? null : turmaService.findById(idTurma);
+		
+		List<Atividade> atividades = atividadeService.findAll(turma);
 		
 		model.addAttribute("turmas", turmaService.findAllOrderById());
 		model.addAttribute("atividades", atividades);
 		model.addAttribute("atividade", new Atividade());
-		
+		model.addAttribute("labelAtividades", idTurma == null ? 
+				"Atividades de todas as turmas" : 
+					"Atividades da turma '" + turma.getNome() + "'");
 		return "private/Atividade/Atividades";
 	}
 	

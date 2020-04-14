@@ -9,7 +9,7 @@
 </head>
 	<section layout:fragment="conteudo">
 		<div>
-			<p class="cor-fonte-cinza-escuro titulo1 negrito my-2">Atividades</p>
+			<p class="cor-fonte-cinza-escuro titulo1 negrito my-2" th:text="${labelAtividades}">Atividades</p>
 			<hr/>
 		</div>
 		
@@ -19,7 +19,18 @@
 				<i class="ml-2 fas fa-plus"></i>
 			</button> 
 		</div>
-
+		<form th:action="@{/private/atividades}" class="form-inline">
+			<div class="form-group">
+				<select name="idTurma" class="form-control">
+					<option value="">Atividades de todas as turmas</option>
+					<option th:each="turma : ${turmas}" th:value="${turma.id}" th:label="|Atividades do(a) '${turma.nome}'|"></option>
+				</select>
+				<button class="btn btn-outline-secondary ml-2">
+					Buscar
+					<i class="ml-2 fas fa-search"></i>
+				</button>
+			</div>
+		</form>
 		<div class="table-responsive">
 			<table class="table table-striped table-sm" id="tableTurmas">
 				<thead>

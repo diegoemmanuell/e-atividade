@@ -20,8 +20,8 @@ public class AtividadeService {
 
 	@Autowired private AtividadeRepository atividadeRepository;
 	
-	public List<Atividade> findAll() {
-		return atividadeRepository.findAllOrderByDataDevolucaoAndId();
+	public List<Atividade> findAll(Turma turma) {
+		return atividadeRepository.findAllOrderByDataDevolucaoAndId(turma);
 	}
 
 	public boolean adicionaAtividade(Atividade atividade, MultipartFile pdf) throws IOException {
@@ -94,9 +94,4 @@ public class AtividadeService {
 		
 		return true;
 	}
-
-	public List<Atividade> findByTurmaOrderByDataDevolucaoAndId(Turma turma) {
-		return atividadeRepository.findByTurmaOrderByDataDevolucaoAndId(turma);
-	}
-
 }
